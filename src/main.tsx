@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { appTheme } from './theme';
+
 import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
 import { Authenticator } from '@aws-amplify/ui-react'; //import AmplifyUI from amplify ui-react;
 import '@aws-amplify/ui-react/styles.css'; //import AmplifyUI styleSheet from amplify ui-react;
-import { View, Image, Text, useTheme, ThemeProvider} from '@aws-amplify/ui-react';
+import { View, Image, Text, useTheme} from '@aws-amplify/ui-react';
 import I18n from './i18n';
 
 
