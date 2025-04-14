@@ -2,18 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import { appTheme } from './theme';
 import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
 import { Authenticator } from '@aws-amplify/ui-react'; //import AmplifyUI from amplify ui-react;
 import '@aws-amplify/ui-react/styles.css'; //import AmplifyUI styleSheet from amplify ui-react;
 import { View, Image, Text, useTheme, ThemeProvider} from '@aws-amplify/ui-react';
-
+import I18n from './i18n';
 
 
 const formFields = {
   signIn: {
     username: {
-      dialCode: '+972'
+      dialCode: '+972',
+      label: I18n.get('Email or Phone'),
+      isRequired: true,
+      placeholder: I18n.get('Enter your email or phone'),
+      type: 'default',
     },
   },
   signUp: {
@@ -44,7 +49,7 @@ const components = {
     return (
       <View textAlign="center" padding={tokens.space.large}>
         <Text color={tokens.colors.neutral[80]}>
-          &copy; 2025 Bar-Ilan University. All rights reserved.
+          &copy;  {I18n.get('Copyright')}
         </Text>
       </View>
     );

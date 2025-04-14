@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
-import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator, useAuthenticator, View, Button } from '@aws-amplify/ui-react';
 import { generateClient } from "aws-amplify/data";
 import I18n from './i18n';
 
@@ -14,13 +14,13 @@ function App() {
   const [refresh, setRefresh] = useState(0);
 
   useEffect(() => {
+    document.documentElement.dir = I18n.get('Lang') === 'he' ? 'rtl' : 'ltr';
     client.models.Todo.observeQuery().subscribe({
       next: (data) => setTodos([...data.items]),
     });
     console.log("set lang", lang);
     I18n.setLanguage(lang);
     document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
   }, [lang]);
 
   const toggleLanguage = () => {
@@ -39,10 +39,13 @@ function App() {
  }
 
   return (
-    <Authenticator>
+    <Authenticator >
     <main>
-       <h1>{user?.signInDetails?.loginId}'s todos</h1>
-       <button onClick={createTodo}>+ new</button>
+    <header>
+          <h1>{I18n.get('Welcome')}</h1>
+    </header>       
+    <h1>{user?.signInDetails?.loginId}'s todos</h1>
+    <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
           <li 
@@ -59,10 +62,11 @@ function App() {
       </div>
       <button onClick={signOut}>{I18n.get('Sign Out')}</button>
       <button onClick={toggleLanguage}>{I18n.get('Change Language')}</button>
-
+    <footer>
+      <p>© {I18n.get('Copyright')}</p>
+    </footer>
     </main>
     </Authenticator>
   );
 }
-
 export default App;
