@@ -7,13 +7,26 @@ import outputs from "../amplify_outputs.json";
 import { Authenticator } from '@aws-amplify/ui-react'; //import AmplifyUI from amplify ui-react;
 import '@aws-amplify/ui-react/styles.css'; //import AmplifyUI styleSheet from amplify ui-react;
 
+const formFields = {
+  signIn: {
+    username: {
+      dialCode: '+227'
+    },
+  },
+  signUp: {
+    phone_number: {
+      dialCode: '+227'
+    },
+  },
+}
+
 
 Amplify.configure(outputs);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   
   <React.StrictMode>
-    <Authenticator>
+    <Authenticator  formFields={formFields}>
       <App />
     </Authenticator>
   </React.StrictMode>);
