@@ -6,7 +6,10 @@ import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
 import { Authenticator } from '@aws-amplify/ui-react'; //import AmplifyUI from amplify ui-react;
 import '@aws-amplify/ui-react/styles.css'; //import AmplifyUI styleSheet from amplify ui-react;
-import { View, Image, Text, useTheme } from '@aws-amplify/ui-react';
+import { View, Image, Text, useTheme, ThemeProvider} from '@aws-amplify/ui-react';
+
+
+
 const formFields = {
   signIn: {
     username: {
@@ -41,7 +44,7 @@ const components = {
     return (
       <View textAlign="center" padding={tokens.space.large}>
         <Text color={tokens.colors.neutral[80]}>
-          &copy; All Rights Reserved
+          &copy; 2025 Bar-Ilan University. All rights reserved.
         </Text>
       </View>
     );
@@ -54,7 +57,7 @@ Amplify.configure(outputs);
 ReactDOM.createRoot(document.getElementById("root")!).render(
   
   <React.StrictMode>
-    <Authenticator  formFields={formFields} components={components}>
-      <App />
-    </Authenticator>
+      <Authenticator  formFields={formFields} components={components}>
+        <App />
+      </Authenticator>
   </React.StrictMode>);
