@@ -20,5 +20,4 @@ export const auth = defineAuth({
       //dialCode: '+972'
     }
   }
-
 });
