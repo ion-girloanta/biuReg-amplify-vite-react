@@ -17,7 +17,7 @@ export const auth = defineAuth({
   userAttributes: {
     phoneNumber: { 
       required: true,
-       // dialCode: '+227'
+      //dialCode: '+972'
     }
   }
 
