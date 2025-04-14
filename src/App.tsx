@@ -5,13 +5,14 @@ import { generateClient } from "aws-amplify/data";
 import I18n from './i18n';
 
 
+
 const client = generateClient<Schema>();
 
 function App() {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
   const { user, signOut } = useAuthenticator();
   const [lang, setLang] = useState('he');
-  const [refresh, setRefresh] = useState(0);
+
 
   useEffect(() => {
     document.documentElement.dir = I18n.get('Lang') === 'he' ? 'rtl' : 'ltr';
@@ -27,7 +28,6 @@ function App() {
     setLang((prev) => (prev === 'en' ? 'he' : 'en'));
     console.log("set lang", lang, I18n.get('Sign Out'));
     I18n.setLanguage(lang);
-    setRefresh((r) => r + 1);
   };
 
   function createTodo() {
